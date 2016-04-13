@@ -21,7 +21,6 @@ body {
 }
 
 .holes {
-    border: 2px solid black;
     width: 150px;
     height: 150px;
     position: relative;
@@ -29,6 +28,7 @@ body {
     margin: 5px;
     border-radius: 50%;
     background-color: black;
+    border: 2px solid black;
 }
 
 .holes:hover {
@@ -69,26 +69,32 @@ h1 {
     font-size: 1.5em;
 }
 
+#dog {
+    font-size: 4em;
+}
+
 .selected {
     background-image: url(http://orig01.deviantart.net/d34d/f/2015/317/9/b/_f2u____annoying_dog_pixel_doll_by_leokatana-d9gltid.gif);
     background-repeat: no-repeat;
     background-position: center;
-    background-color: white;
+    background-color: red;
 }
 
 .scoreTime {
     width: 600px;
     height: 50px;
     margin: 0 auto;
+    margin-bottom: 7%;
 }
 
 #score, #timer, #high {
     font-size: 2em;
     width: 200px;
     float: left;
+    margin-bottom: 5%;
 }
 
-span {
+#annoying {
     -webkit-animation-name: blinker;
     -webkit-animation-duration: 2s;
     -webkit-animation-timing-function: linear;
