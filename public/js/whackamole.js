@@ -4,15 +4,14 @@
     
     $(document).ready(function(){
         // these are the global variables
-        var time = 35;
+        var time = 38;
         var counter;
         var score = 0;
-        var highScore = 0; 
+        var highScore = localStorage.getItem("highScore"); 
         var holes = $('#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9');
-        
-        $("#high").append(highScore);
 
         $("#dog").hide();
+        var person = prompt("ENTER YOUR NAME TO CONTINUE", "Kari");
 
         //this is the function that generates a random dog
         //a dog will appear in each hole
@@ -28,10 +27,14 @@
             //the listener is automatically removed the first
             //time it is called (hooking an event once).
             $(".selected").off("click").one("click", function() {
+                //create a bark sound when the dog is clicked
+                var bark = document.createElement("audio");
+                bark.setAttribute("src", "/wav/tinydogbark.wav");
+                bark.play();
+                //remove dog from board on click
                 hole.removeClass("selected");
                 score++;
                 $("#score").html("Score: " + score);
-                console.log("hi");
              });
             setTimeout(function(){
                 hole.removeClass("selected");
@@ -57,21 +60,37 @@
         };
 
         //this function just hides elements to prevent
-        //the user from playing
-        //also alerts that game is over 
+        //the user from playing 
         function endGame() {
             $("#grid").hide();
             $(".holes").hide();
             $("#start").hide();
             $("#description").hide();
             $("#dog").show();
-            if (score > highScore) {
-                $("#high").html("Best :" + score);
-                highScore++;
-            } else {
-                $("#high").html("Best :" + highScore);
+            //grabs prompt's user input and
+            //incorporates it into message
+            if (person != null) {
+                $("#det").html(person + ", STAY DETERMINED!")
             }
+            //plays a different song on end game
+            var determination = document.createElement("audio");
+            determination.setAttribute("src", "/mp3/determination.mp3");
+            determination.play();
+            //highscore code
+            if (highScore === null){
+                highScore = 0;
+            } 
+
+            if (score > highScore) {
+                localStorage.setItem("highScore", score);
+                highScore = score;
+            }
+            //displays high score at the end of 
+            //the game
+            $("#high").html("Best: " + highScore);
         };
+        //displays high score on reload
+        $("#high").html("Best: " + highScore);
 
         //prevents the timer from starting as soon as
         //the page is loaded.
@@ -89,7 +108,7 @@
 
         //will reload the page to reset everything
         $("#reset").on("click", function(){
-            reloadPage();
+            location.reload();
         });
     });
 })();
