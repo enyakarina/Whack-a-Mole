@@ -3,15 +3,16 @@
     "use strict"
     
     $(document).ready(function(){
+        
+        $("#dog").hide();
+
         // these are the global variables
-        var time = 38;
         var counter;
-        var score = 0;
         var highScore = localStorage.getItem("highScore"); 
         var holes = $('#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9');
-
-        $("#dog").hide();
         var person = prompt("ENTER YOUR NAME TO CONTINUE", "Kari");
+        var score = 0;
+        var time = 38;
 
         //this is the function that generates a random dog
         //a dog will appear in each hole
@@ -36,10 +37,9 @@
                 score++;
                 $("#score").html("Score: " + score);
              });
-            setTimeout(function(){
+            setTimeout(function() {
                 hole.removeClass("selected");
             }, 1000);
-
         };
 
         //this is the timer function
@@ -77,7 +77,7 @@
             determination.setAttribute("src", "/mp3/determination.mp3");
             determination.play();
             //highscore code
-            if (highScore === null){
+            if (highScore === null) {
                 highScore = 0;
             } 
 
@@ -89,13 +89,14 @@
             //the game
             $("#high").html("Best: " + highScore);
         };
+        
         //displays high score on reload
         $("#high").html("Best: " + highScore);
 
         //prevents the timer from starting as soon as
         //the page is loaded.
         //will only start when the user clicks start button
-        $("#start").on("click", function(){
+        $("#start").on("click", function() {
             counter = setInterval(timer, 1000);
             //annoying music starts when user clicks start
             var dogSong = document.createElement("audio");
@@ -107,7 +108,7 @@
         });
 
         //will reload the page to reset everything
-        $("#reset").on("click", function(){
+        $("#reset").on("click", function() {
             location.reload();
         });
     });
