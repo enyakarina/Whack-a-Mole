@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://i.imgur.com/G51dUjV.png);
+    background-image: url(/image/dogbg.png);
     background-position: fixed;
     font-family: 'VT323';
     text-align: center;
@@ -87,7 +87,7 @@ h1 {
 
 .selected {
     background-color: red;
-    background-image: url(http://orig01.deviantart.net/d34d/f/2015/317/9/b/_f2u____annoying_dog_pixel_doll_by_leokatana-d9gltid.gif);
+    background-image: url(/image/dogpop.gif);
     background-position: center;
     background-repeat: no-repeat;
 }
